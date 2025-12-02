@@ -13,9 +13,8 @@ class MicroServo
 
     // standart positions in degree
 
-    const int POSITION_A = 30;
-    const int POSITION_B = 120;
-    const int POSITION_C = 150;
+    const int POSITION_A = 15;
+    const int POSITION_B = 0;
 
     Servo m_servo;
     uint8_t& m_positionNumber;

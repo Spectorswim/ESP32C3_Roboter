@@ -15,7 +15,7 @@ void MicroServo::checkPosition()
   {
     case 0: // change to POSITION_A
     {
-      m_position = slowTurnTo(POSITION_A);
+      m_position = POSITION_A;
       m_servo.write(m_position);
       break;
     }
@@ -23,12 +23,6 @@ void MicroServo::checkPosition()
     {
       m_position = slowTurnTo(POSITION_B);
       m_servo.write(m_position);
-      break;
-    }
-    case 2: // change to POSITION_C
-    {
-      m_position = POSITION_C;
-      m_servo.write(m_position);  
       break;
     }
   }
