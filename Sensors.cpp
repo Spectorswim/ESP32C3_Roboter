@@ -13,8 +13,8 @@ Sensors::Sensors(uint8_t sensorFrontPin, uint8_t sensorBackPin, uint8_t& sensors
 
 bool Sensors::chekSensorsInput()
 {
-  m_lineDetector = (analogRead(m_sensorFrontPin) > BLACK || analogRead(m_sensorBackPin) > BLACK);
-   return m_sensorsON && m_lineDetector;
+  m_lineDetector = (analogRead(m_sensorFrontPin) > BLACK_F || analogRead(m_sensorBackPin) > BLACK_B);
+  return m_sensorsON && m_lineDetector;
 }
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< //
 // ================================================ END File Sensors.cpp =========================================== //

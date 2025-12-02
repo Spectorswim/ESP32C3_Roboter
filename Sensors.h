@@ -15,7 +15,8 @@ class Sensors
   uint8_t m_sensorFrontPin;
   uint8_t m_sensorBackPin;
 
-  const int BLACK = 4000;
+  const int BLACK_F = 4000;
+  const int BLACK_B = 4000;
 
   public:
   Sensors(uint8_t sensorFrontPin, uint8_t sensorBackPin, uint8_t& sensorsON, uint8_t& lineDetector);
