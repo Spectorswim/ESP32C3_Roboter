@@ -20,8 +20,6 @@ constexpr byte MOTOR_RB = 2;          // GPIO2
 // Micro Servo
 constexpr byte SG90_PIN = 4;          // GPIO4
 
-
-constexpr bool g_debug = false;
 constexpr byte g_turnDeadZone = 10;
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< END global variables and PINs definition <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< //
@@ -30,6 +28,8 @@ constexpr byte g_turnDeadZone = 10;
 #include "Movement.h"
 #include "MicroServo.h"
 #include "Sensors.h"
+
+#define DEBUG
 
 Movement* movement;
 MicroServo* servo;
@@ -76,6 +76,13 @@ void loop()                           // do not call delay(), use instead Remote
   }
 
   servo->checkPosition(); // puts the servo in one of the selected positions
+#ifdef DEBUG
+  Serial.print("Sensor front value: ");
+  Serial.print(analogRead(SENSOR_FRONT));
+  Serial.print("   \tSensor back value: ");
+  Serial.print(analogRead(SENSOR_BACK));
+  Serial.print("\n");
+#endif
 }
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< //
 // ============================================= END File main.ino ================================================= //
