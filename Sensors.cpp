@@ -8,6 +8,8 @@ Sensors::Sensors(uint8_t sensorFrontPin, uint8_t sensorBackPin, uint8_t& sensors
   : m_sensorFrontPin(sensorFrontPin), m_sensorBackPin(sensorBackPin), 
   m_sensorsON(sensorsON), m_lineDetector(lineDetector)
 {
+  BLACK_F = analogRead(m_sensorFrontPin) + 40;
+  BLACK_B = analogRead(m_sensorBackPin)  + 40;
   // everything is already initialized in the initialization list
 }
 
