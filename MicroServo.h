@@ -9,11 +9,11 @@
 class MicroServo
 {
   private:
-    const int SLOW_TURN_RATE_PER_CAL = 1;
+    const int SLOW_TURN_RATE_PER_CAL = 3;
 
     // standart positions in degree
 
-    const int POSITION_A = 15;
+    const int POSITION_A = 45;
     const int POSITION_B = 0;
 
     Servo m_servo;
