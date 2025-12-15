@@ -7,6 +7,7 @@ MicroServo::MicroServo(int8_t servoPin, uint8_t& positionNumber)
 :  m_positionNumber(positionNumber)
 {
   m_servo.attach(servoPin);
+  m_servo.write(15);
 }
 
 void MicroServo::checkPosition()

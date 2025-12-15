@@ -43,6 +43,7 @@ void setup()
   sensors = new Sensors(SENSOR_FRONT, SENSOR_BACK, RemoteXY.sensorsON, RemoteXY.lineDetector);
   RemoteXY_Init();                    // used to connect to RemoteXY
   Serial.begin(9600);
+  delay(3000);
 }
 
 void loop()                           // do not call delay(), use instead RemoteXY_delay() 
