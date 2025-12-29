@@ -22,6 +22,7 @@ constexpr byte SG90_PIN = 4;          // GPIO4
 
 constexpr byte g_turnDeadZone = 10;
 
+uint8_t lineDetector = 0;
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< END global variables and PINs definition <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< //
 
 #include "RemoteXY_conf.h"
@@ -39,8 +40,8 @@ void setup()
 { 
   servo = new MicroServo(SG90_PIN, RemoteXY.position);
   movement = new Movement(MOTOR_LA, MOTOR_LB, MOTOR_RA, MOTOR_RB, 
-      RemoteXY.linearSpeed, RemoteXY.angularSpeed, g_turnDeadZone);
-  sensors = new Sensors(SENSOR_FRONT, SENSOR_BACK, RemoteXY.sensorsON, RemoteXY.lineDetector);
+      RemoteXY.linearSpeed, RemoteXY.angularSpeed, g_turnDeadZone, RemoteXY.gearBox);
+  sensors = new Sensors(SENSOR_FRONT, SENSOR_BACK, RemoteXY.sensorsON, lineDetector);
   RemoteXY_Init();                    // used to connect to RemoteXY
   Serial.begin(9600);
   delay(3000);

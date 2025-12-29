@@ -16,6 +16,7 @@ class Movement
 
     int8_t& m_movementSpeed;
     int8_t& m_turnRate;
+    int8_t& m_gearBox;
     int8_t  m_turnDeadZone;
 
     // smoother speed curve
@@ -25,7 +26,10 @@ class Movement
     int16_t turnRateCalculation(int8_t x);
 
   public:
-    Movement(int8_t LA, int8_t LB, int8_t RA, int8_t RB, int8_t& movementSpeed, int8_t& turnRate, int8_t turnDeadZone);
+    Movement(
+      int8_t LA, int8_t LB, int8_t RA, int8_t RB, 
+      int8_t& movementSpeed, int8_t& turnRate, 
+      int8_t turnDeadZone, int8_t& gearBox);
     void processRemoteXYInput();
     void performEscapeMove(int8_t& direction);
 };
