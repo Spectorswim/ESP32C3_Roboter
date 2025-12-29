@@ -58,12 +58,13 @@ void Movement::processRemoteXYInput()
   // In-place rotation
   if ((inputMove >= 0 ? inputMove : -inputMove) <= LOW_SPEED_TO_INPLACE && angularSpeed != 0)
   {
-      leftSpeed  =  angularSpeed;
-      rightSpeed = -angularSpeed;
+    leftSpeed  =  angularSpeed;
+    rightSpeed = -angularSpeed;
   }
   else
   {
-    angularSpeed /= 3;  // because more precise control is required while driving
+    double preciseControl = ( inputMove > 0 ? 1.0 : -1.0 ) + (inputMove / 100.0) * 5.0;
+    angularSpeed /= preciseControl;  // because more precise control is required while driving
 
     if (linearSpeed > 0) 
     {
@@ -82,23 +83,22 @@ void Movement::processRemoteXYInput()
     {
       if (angularSpeed > 0) 
       {
-        leftSpeed  = linearSpeed;            
-        rightSpeed = linearSpeed + angularSpeed; 
+        leftSpeed  = linearSpeed + angularSpeed;            
+        rightSpeed = linearSpeed; 
       } 
       else 
       {
-        leftSpeed  = linearSpeed - angularSpeed;
-        rightSpeed = linearSpeed;        
+        leftSpeed  = linearSpeed;
+        rightSpeed = linearSpeed - angularSpeed;        
       }
     }
-    
     
     // Note: values may exceed the -255..255 range here,
     // but Motor::write() will internally clamp them,
     // so no explicit constrain() is required.
   }
 
-  double multiplicator = (m_gearBox / 10 * 3 + 70.0) / 100.0;
+  double multiplicator = (m_gearBox / 10.0 * 3.0 + 70.0) / 100.0;
 
   m_left.write(multiplicator * leftSpeed);
   m_right.write(multiplicator * rightSpeed);
