@@ -6,7 +6,7 @@
 #include <cstdint>
 
 constexpr int SPEED_CURVE = 15; // this is the percentage of joystick tilt to get 50% power
-constexpr int LOW_SPEED_TO_INPLACE = 15;
+constexpr int LOW_SPEED_TO_INPLACE = 25;
 constexpr int REVERSE_SPEED = 255;
 
 int16_t Movement::speedCalculation(int8_t x)
@@ -63,7 +63,7 @@ void Movement::processRemoteXYInput()
   }
   else
   {
-    double preciseControl = ( inputMove > 0 ? 1.0 : -1.0 ) + (inputMove / 100.0) * 5.0;
+    double preciseControl = ( inputMove > 0 ? 1.0 : -1.0 ) + (inputMove / 100.0) * 3.0;
     angularSpeed /= preciseControl;  // because more precise control is required while driving
 
     if (linearSpeed > 0) 
